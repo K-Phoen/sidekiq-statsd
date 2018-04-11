@@ -39,6 +39,10 @@ module Sidekiq::Statsd
       # All-time counts
       statsd.gauge(prefix('processed'), @sidekiq_stats.processed)
       statsd.gauge(prefix('failed'), @sidekiq_stats.failed)
+
+      # General status
+      statsd.gauge(prefix('processes_size'), @sidekiq_stats.processes_size)
+      statsd.gauge(prefix('workers_size'), @sidekiq_stats.workers_size)
     end
 
     def prefix(*args)
